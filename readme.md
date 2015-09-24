@@ -6,24 +6,24 @@
 ###Slam dunk
 As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. Soon, we’ll even ask you about tutorials like the one you're checking out now. Why?
 
-Well, we want to know we are doing the right thing for you dear developer, *and* my boss Daniel will give me the evil eye-
+Well, we want to know we are doing the right thing for you dear developer. *And* my boss Daniel will give me the evil eye-
 
 ![](images/Forsman.jpg) 
 
--if we don’t (no bonus either, lol, please give me 9 or 10). [Delighted] (https://delighted.com/)  helps us keep track of how likely you guys are to recommend us, by using a system called Net Promoter Score (NPS). For you who haven’t heard of NPS, you might think I’m a little bit greedy, but here’s how it works:
+-if we don’t (no bonus either, lol, please give me 9 or 10). By using a system called Net Promoter Score (NPS), [Delighted] (https://delighted.com/) helps us keep track of how likely you guys are to recommend us. For you who haven’t heard of NPS, you might think I’m a little bit greedy, but here’s how it works:
 
 NPS is based on a proven single question, and 2 part answers.
 
 ![](images/scsh.png)
 
-First, you’ll answer with a 0-10 numerical rating which makes our data quantifiable over time. Then you’re asked to write an open-ended follow up which adds some really valuable context to the rating. Depending on the score, you’ll either fall into the Promoters’ category (9s and 10s), the Passives’ (7s and 8s), or the Detractors’ (6s and below). The NPS is calculated by *% of promoters - % of detractors*, which’ll generate a score between -100 to 100. The system essentially tells us whether we’re a slam dunk or [not] (http://www.reactiongifs.com/r/slam-dunk.gif).
+First, you’ll answer with a 0-10 numerical rating which makes our data quantifiable over time. Then you’re asked to write an open-ended follow up which adds some really valuable context to the rating. Depending on the score, you’ll either fall into the Promoters’ category (9s and 10s), the Passives’ (7s and 8s), or the Detractors’ (6s and below). The NPS is calculated by *% of Promoters - % of Detractors*, which’ll generate a score between -100 to 100. The system essentially tells us whether we’re a slam dunk or [not] (http://www.reactiongifs.com/r/slam-dunk.gif).
 
 *For more info, check out [Delighted’s NPS page] (https://delighted.com/net-promoter-score) or [try out their awesome API] (https://delighted.com/docs/api) yourself.*
 
 ###Hail or bail
-Monday 28th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delightful API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how you can super easy get incoming SMS and forward that data to delighted.
+Monday 28th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delightful API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how to super easy get an incoming SMS and forward that data to delighted.
 
-You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account
+You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account:
 
 <a href="https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted"><img src="https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67" data-canonical src="http://azuredeploy.net/deploybutton.png" style="max-width:100%;"></a>
 
@@ -59,7 +59,7 @@ public class Identity {
 
 This is simple enough, just the Message and the From as an endpoint. 
 
-Next, lets add the controller, create a new Empty API controller and call it **SMSController.cs**. In this step, we also want the delighted nuget so install that in PM.
+Next, lets add the controller, create a new Empty API controller and call it **SMSController.cs**. In this step, we also want the Delighted NuGet so install that in PM.
 
 ```ruby
 PM> Install-Package Delighted.Api
@@ -86,7 +86,7 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 ```
 *Wonder why we create an email from the phonenumber? Delighted's driven by email, plus we want to check that the creation went smoothly, becuase we need the PersonID to create a surevey response.*
 
-Now, this shoud be good to go! Deploy and send an SMS to the number you rented with the a number from 0-10. 
+Cool, this shoud be good to go! Deploy and send an SMS to the number you rented with a number from 0-10. 
 
 YAY, I suppsed it worked?
 
@@ -130,9 +130,9 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	return new HttpResponseMessage(HttpStatusCode.OK);
 }
 ```
-Deplopy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events. 
+Deploy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events. 
 
-*Now, promise to vote high on future tutorials - my bonus depends on it ;)*
+**Now, promise to vote high on future tutorials - my bonus depends on it ;)**
 
 
 
