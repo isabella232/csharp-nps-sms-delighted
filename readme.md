@@ -1,7 +1,10 @@
-# Building an NPS SMS system with Sinch and Delighted 
+![](images/puppyeyes.png)
 
-##Slam dunk?
-As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. We’ll even ask you about this tutorial, down in the bottom of the page. Why?
+#Pretty Please?
+## Building an NPS SMS system with Sinch and Delighted 
+
+###Slam dunk
+As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. Soon, we’ll even ask you about tutorials like the one you're checking out now. Why?
 
 Well, we want to know we are doing the right thing for you dear developer, *and* my boss Daniel will give me the evil eye-
 
@@ -17,21 +20,20 @@ First, you’ll answer with a 0-10 numerical rating which makes our data quantif
 
 *For more info, check out [Delighted’s NPS page] (https://delighted.com/net-promoter-score) or [try out their awesome API] (https://delighted.com/docs/api) yourself.*
 
-##Hail or bail
+###Hail or bail
 Monday 28th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delightful API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how you can super easy get incoming SMS and forward that data to delighted.
 
-You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account 
-<a href="https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
+You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account
 
-## Prerequisites 
+<a href="https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted"><img src="https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67" data-canonical src="http://azuredeploy.net/deploybutton.png" style="max-width:100%;"></a>
+
+### Prerequisites 
 1. [Sinch account and an SMS enabled number] (https://www.sinch.com/dashboard#/numbers)
 2. [A delightful account] (https://delighted.com/)
 2. Some cash on your account
 3. A web API project
 
-## Set up your account 
+### Set up your account 
 [Login to your dashboard] (https://www.sinch.com/dashboard),
 click on numbers and rent one (make sure it's an SMS enabled number). 
 ![](images/rentnumber.png) 
@@ -130,7 +132,7 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 ```
 Deplopy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events. 
 
-Now, I'd really appreciate it if you could rate and comment this tutorial - my bonus depends on it ;)
+*Now, promise to vote high on future tutorials - my bonus depends on it ;)*
 
 
 
