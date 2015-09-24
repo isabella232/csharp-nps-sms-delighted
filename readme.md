@@ -1,5 +1,24 @@
-# Building a NPS SMS system with Sinch and Delighted 
-Hey, so as many of you know we are using delighted.com for to ask you guys what you think of us. Every time we resolve a support request we ask you if you would share sinch with a friend, we even ask you down in the bottom here about the tutorial. Why do we do that? Well, we want to know we are doing the right thing for you dear developer, and my boss Daniel (Picture of Forsman) will give me the evil eye if this score is not high (no bonus either, lol so please give me 9 or 10). Anyway for more information aobut NPS check out delighted.com its a super imple service to use and as an API guy we like that they have an API. The 28th I am doing a talk on ApiWorld and I thought it would be cool to ask for feedback via SMS if they liked the talk. So today I made a small nuget for interacting with the [Delightful api  ](https://www.nuget.org/packages/Delighted.Api/0.1.1.1) and wanted to show you how you can super easy get incoming SMS and forward that data to delighted.
+# Building an NPS SMS system with Sinch and Delighted 
+
+##Slam dunk?
+As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. We’ll even ask you about this tutorial, down in the bottom of the page. Why?
+
+Well, we want to know we are doing the right thing for you dear developer, *and* my boss Daniel will give me the evil eye-
+
+![](images/Forsman.jpg) 
+
+-if we don’t (no bonus either, lol, please give me 9 or 10). [Delighted] (https://delighted.com/)  helps us keep track of how likely you guys are to recommend us, by using a system called Net Promoter Score (NPS). For you who haven’t heard of NPS, you might think I’m a little bit greedy, but here’s how it works:
+
+NPS is based on a proven single question, and 2 part answers.
+
+![](images/scsh.png)
+
+First, you’ll answer with a 0-10 numerical rating which makes our data quantifiable over time. Then you’re asked to write an open-ended follow up which adds some really valuable context to the rating. Depending on the score, you’ll either fall into the Promoters’ category (9s and 10s), the Passives’ (7s and 8s), or the Detractors’ (6s and below). The NPS is calculated by *% of promoters - % of detractors*, which’ll generate a score between -100 to 100. The system essentially tells us whether we’re a slam dunk or [not] (http://www.reactiongifs.com/r/slam-dunk.gif).
+
+*For more info, check out [Delighted’s NPS page] (https://delighted.com/net-promoter-score) or [try out their awesome API] (https://delighted.com/docs/api) yourself.*
+
+##Hail or bail
+Monday 28th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delightful API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how you can super easy get incoming SMS and forward that data to delighted.
 
 You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account 
 <a href="https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted target="_blank">
@@ -7,23 +26,24 @@ You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-
 </a>
 
 ## Prerequisites 
-1. Sinch account and an SMS enabled number https://www.sinch.com/dashboard#/numbers
-2. A delightful account https://delighted.com/
+1. [Sinch account and an SMS enabled number] (https://www.sinch.com/dashboard#/numbers)
+2. [A delightful account] (https://delighted.com/)
 2. Some cash on your account
-3. A WebApi project
+3. A web API project
 
 ## Set up your account 
-Login to your dashboard  https://www.sinch.com/dashboard
-click on numbers and rent one, make sure its an SMS enabled number 
+[Login to your dashboard] (https://www.sinch.com/dashboard),
+click on numbers and rent one (make sure it's an SMS enabled number). 
 ![](images/rentnumber.png) 
-Choose you apps, and if you dont have one create one and click on the little pen 
-![](images/configure.png), add the number you just rented to the app, and confugure the callback url.
-The callback url is where we post incoming messages, and you can read more about that in the [documentation](https://www.sinch.com/docs/sms/#smsmessagingcallbackapi)  
+Choose you app - or create one and click on the little pen - add the number you just rented to the app, and confugure the callback URL.
+The callback URL's where we post incoming messages, and you can read more about that in [the documentation](https://www.sinch.com/docs/sms/#smsmessagingcallbackapi).
 
 ## CODE!
 
-Finally some code, in your WebApi project, add a class in your Models folder and call it **SMSCallbackModel.cs**,  for SMS compared with Callingcallbacks are pretty simple, the SMS is delivered and there is no response required. 
-The request contains more info, but for our purpose we just care about the sender and the actual message. So lets add a couple of properties
+Finally, some code. In your web API project, add a class in your Models folder and call it **SMSCallbackModel.cs**. SMS are pretty simple compared to Calling callbacks - the SMS is delivered and there's no response required. 
+
+The request contains more info, but we only care about the sender and the actual message for this purpose. So lets add a couple of properties:
+
 ```csharp
 public class SMSCallbackModel {
 	public Identity From { get; set; }
@@ -35,11 +55,15 @@ public class Identity {
 }
 ``` 
 
-So, this is simple enough, just the message and the from as en endpoint, Next lets add add the controller, create a new Empty API controller and call it **SMSController.cs**, next we also want to the delighted nuget so install that in PM .
+This is simple enough, just the Message and the From as an endpoint. 
+
+Next, lets add the controller, create a new Empty API controller and call it **SMSController.cs**. In this step, we also want the delighted nuget so install that in PM.
+
 ```ruby
 PM> Install-Package Delighted.Api
 ```
-Open up SMSController and add the following code
+Open up SMSController and add the following code:
+
 ```csharp
 public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	var client = new Delighted.Api.Client("yourkey");
@@ -58,9 +82,19 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	return new HttpResponseMessage(HttpStatusCode.OK);
 }
 ```
-you might wonder why we create an email from the phonenumber, its delighed, they are driven by email so a person must have an email. Second we just check that the creation went smoothly becuase we need the PersonID to create a surevey response. Now, this shoud be good to go, Deplpoy and send an SMS to the number you rented with the a number from 0-10. 
-YAY, I suppsed it worked, now one of the things I really value with the feedback system is when you guys gives me comment, so I wanted to add that lets change the code (and here is where it becomes a litle hacky since we are trying to get a number and the rest as comment from an sms), So i decide to ask teh audience to send an SMS with the score and then any comments. I also wanted to track the event with a property on the person. 
+*Wonder why we create an email from the phonenumber? Delighted's driven by email, plus we want to check that the creation went smoothly, becuase we need the PersonID to create a surevey response.*
+
+Now, this shoud be good to go! Deploy and send an SMS to the number you rented with the a number from 0-10. 
+
+YAY, I suppsed it worked?
+
+Now, one of the things I really value with the feedback system is of course getting comments from you guys, so I wanted to add that. Let's change the code (here is where it becomes a little hacky since we are trying to get a number and the rest as a comment from an SMS)!
+
 ![](images/filter_d.png)
+
+I've decided to ask the audience to send an SMS with a score and a comment. I also want to track the event with a property on the person.
+
+
 ```csharp
 public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	var client = new Delighted.Api.Client("yourkey");
@@ -94,9 +128,9 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	return new HttpResponseMessage(HttpStatusCode.OK);
 }
 ```
-Cool, deplopy and send SMS to the number again with the text "10 awesome" and that should now show up in your portal and you will be able to filter by event. 
+Deplopy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events. 
 
-I really appreciate if you could click on below and rate what you thought about this tutorial, my bonus depends on it ;)
+Now, I'd really appreciate it if you could rate and comment this tutorial - my bonus depends on it ;)
 
 
 
