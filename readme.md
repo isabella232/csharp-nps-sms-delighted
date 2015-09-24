@@ -130,11 +130,7 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 	return new HttpResponseMessage(HttpStatusCode.OK);
 }
 ```
-Deploy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events. 
-
-**Now, promise to vote high on future tutorials - my bonus depends on it ;)**
-
-
+Deploy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events.
 
 
 
