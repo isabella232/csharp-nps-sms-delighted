@@ -55,6 +55,7 @@ public class Identity {
 
 This is simple enough, just the Message and the From as an endpoint. 
 
+##Adding the Controller
 Next, lets add the controller, create a new Empty API controller and call it **SMSController.cs**. In this step, we also want the Delighted NuGet so install that in PM.
 
 ```ruby
@@ -90,6 +91,7 @@ Now, one of the things I really value with the feedback system is of course gett
 
 ![filter](images/filter_d.png)
 
+##Recieving SMS
 I've decided to ask the audience to send an SMS with a score and a comment. I also want to track the event with a property on the person.
 
 
@@ -129,8 +131,3 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 Deploy and send an SMS to the number with the text *10 awesome*. That should show up in your portal now? You'll also be able to filter by events.
 
 Now dear developer, go dunk!
-
-
-
-  
-
