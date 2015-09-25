@@ -1,17 +1,16 @@
 # Building an NPS SMS system with Sinch and Delighted 
 
-###Slam dunk
 As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. Soon, we’ll even ask you about tutorials like the one you're checking out now. Why?
 
 Well, we want to know we are doing the right thing for you dear developer. *And* my boss Daniel will give me the evil eye-
 
-![](images/Forsman.jpg) 
+![daniel forsman](images/Forsman.jpg) 
 
--if we don’t (no bonus either, lol, please give me 9 or 10). By using a system called Net Promoter Score (NPS), [Delighted] (https://delighted.com/) helps us keep track of how likely you guys are to recommend us. For you who haven’t heard of NPS, you might think I’m a little bit greedy, but here’s how it works:
+-if we don’t. By using a system called Net Promoter Score (NPS), [Delighted] (https://delighted.com/) helps us keep track of how likely you guys are to recommend us. For you who haven’t heard of NPS, you might think I’m a little bit greedy, but here’s how it works:
 
 NPS is based on a proven single question, and 2 part answers.
 
-![](images/scsh.png)
+![net promoter score](images/scsh.png)
 
 First, you’ll answer with a 0-10 numerical rating which makes our data quantifiable over time. Then you’re asked to write an open-ended follow up which adds some really valuable context to the rating. Depending on the score, you’ll either fall into the Promoters’ category (9s and 10s), the Passives’ (7s and 8s), or the Detractors’ (6s and below). The NPS is calculated by *% of Promoters - % of Detractors*, which’ll generate a score between -100 to 100. The system essentially tells us whether we’re a slam dunk or [not] (http://www.reactiongifs.com/r/slam-dunk.gif).
 
@@ -89,7 +88,7 @@ YAY, I suppsed it worked?
 
 Now, one of the things I really value with the feedback system is of course getting comments from you guys, so I wanted to add that. Let's change the code (here is where it becomes a little hacky since we are trying to get a number and the rest as a comment from an SMS)!
 
-![](images/filter_d.png)
+![filter](images/filter_d.png)
 
 I've decided to ask the audience to send an SMS with a score and a comment. I also want to track the event with a property on the person.
 
