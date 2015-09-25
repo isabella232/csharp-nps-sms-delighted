@@ -21,7 +21,7 @@ Tuesday 29th, I'm doing a talk on [API World] (http://integrate2015.sched.org/sp
 
 You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account:
 
-<a href="https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted"><img src="https://camo.githubusercontent.com/9285dd3998997a0835869065bb15e5d500475034/687474703a2f2f617a7572656465706c6f792e6e65742f6465706c6f79627574746f6e2e706e67" data-canonical src="http://azuredeploy.net/deploybutton.png" style="max-width:100%;"></a>
+[![net promoter score](images/deploybutton.png)] (https://azuredeploy.net/?repository=https://github.com/sinch/csharp-nps-sms-delighted)
 
 ## Prerequisites 
 1. [Sinch account and an SMS enabled number] (https://www.sinch.com/dashboard#/numbers)
