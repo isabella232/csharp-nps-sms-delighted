@@ -1,7 +1,4 @@
-#Pretty Please?
-![](images/puppyeyes.png)
-
-## Building an NPS SMS system with Sinch and Delighted 
+# Building an NPS SMS system with Sinch and Delighted 
 
 ###Slam dunk
 As you probably already know, every time we resolve a support request we ask you if you would share Sinch with a friend. Soon, we’ll even ask you about tutorials like the one you're checking out now. Why?
