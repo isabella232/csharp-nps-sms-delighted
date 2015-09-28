@@ -17,7 +17,7 @@ First, you’ll answer with a 0-10 numerical rating which makes our data quantif
 *For more info, check out [Delighted’s NPS page] (https://delighted.com/net-promoter-score) or [try out their awesome API] (https://delighted.com/docs/api) yourself.*
 
 ###Hail or bail
-Tuesday 29th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delightful API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how to super easy get an incoming SMS and forward that data to delighted.
+Tuesday 29th, I'm doing a talk on [API World] (http://integrate2015.sched.org/speaker/christian64?iframe=no&w=i:0;&sidebar=yes&bg=no&utm_source=Sinch+Partners&utm_campaign=a442daf0b7-Newsletter_September_v29_16_2015&utm_medium=email&utm_term=0_424b5acd88-a442daf0b7-132935801#.VgKvaSCqpBd) and I thought it would be cool to ask for feedback via SMS. So today, I made a small NuGet for interacting with the [Delighted API] (https://www.nuget.org/packages/Delighted.Api/0.1.1.1). I want to show you how to super easy get an incoming SMS and forward that data to delighted.
 
 You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-delighted) or deploy directly to your azure account:
 
@@ -25,7 +25,7 @@ You can download the code from [Github](https://github.com/sinch/csharp-nps-sms-
 
 ## Prerequisites 
 1. [Sinch account and an SMS enabled number] (https://www.sinch.com/dashboard#/numbers)
-2. [A delightful account] (https://delighted.com/)
+2. [A Delighted account] (https://delighted.com/)
 2. Some cash on your account
 3. A web API project
 
@@ -115,7 +115,7 @@ public async Task<HttpResponseMessage> Index(SMSCallbackModel model) {
 		//Safty to not add fake zeros        
 		if (model.Message != "0" && score == 0)
         	return new HttpResponseMessage(HttpStatusCode.OK);
-		//Add a property that we can filter for in delightful  
+		//Add a property that we can filter for in Delighted  
 		var dic = new Dictionary<string, string>();
         dic.Add("survey_origin", "APIWorld");
         await client.AddResult(new AddResult() {
